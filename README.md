@@ -35,3 +35,32 @@ print("\nUpper Triangular Matrix \nU:", U)
 #transpose of matrix
 A_T = A.T
 print("\nTranspose of A:\n", A_T)
+
+#equation
+import numpy as np
+import matplotlib.pyplot as plt
+
+A = np.array([[2, 1],
+              [5, 3]])
+b = np.array([8, 18])
+
+x_vals = np.linspace(-10, 10, 400)
+
+y1 = (b[0] - A[0, 0] * x_vals) / A[0, 1]
+y2 = (b[1] - A[1, 0] * x_vals) / A[1, 1]
+
+plt.plot(x_vals, y1, label=f'{A[0, 0]}x + {A[0, 1]}y = {b[0]}')
+plt.plot(x_vals, y2, label=f'{A[1, 0]}x + {A[1, 1]}y = {b[1]}')
+
+solution = np.linalg.solve(A, b)
+plt.plot(solution[0], solution[1], 'ro', label='Intersection Point')
+
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Graphical Solution of 2x2 System')
+plt.grid(True)
+plt.axhline(0, color='gray', linestyle='--', linewidth=0.5)
+plt.axvline(0, color='gray', linestyle='--', linewidth=0.5)
+plt.legend()
+plt.show()
